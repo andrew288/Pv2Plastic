@@ -8,14 +8,18 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.myfirstapplication.fragments.AccountFragment;
+import com.example.myfirstapplication.fragments.AwardsFragment;
+import com.example.myfirstapplication.fragments.CreateElementFragment;
+import com.example.myfirstapplication.fragments.HomeFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
 
     HomeFragment homeFragment = new HomeFragment();
     CreateElementFragment createElementFragment = new CreateElementFragment();
-    ThirdFragment thirdFragment = new ThirdFragment();
-    FourthFragment  fourthFragment = new FourthFragment();
+    AwardsFragment awardsFragment = new AwardsFragment();
+    AccountFragment accountFragment = new AccountFragment();
     BottomNavigationView navigation;
 
     @Override
@@ -40,10 +44,10 @@ public class MainActivity extends AppCompatActivity {
                     loadFragment(createElementFragment);
                     return true;
                 case R.id.thirdFragment:
-                    loadFragment(thirdFragment);
+                    loadFragment(awardsFragment);
                     return true;
                 case R.id.fourthFragment:
-                    loadFragment(fourthFragment);
+                    loadFragment(accountFragment);
                     return true;
             }
             return false;

@@ -6,12 +6,24 @@
         <entry key="../../../../layout/custom_preview.xml" value="0.2" />
         <entry key="app/src/main/res/drawable/ic_baseline_image_24.xml" value="0.1135" />
         <entry key="app/src/main/res/drawable/ic_baseline_photo_camera_24.xml" value="0.1135" />
+        <entry key="app/src/main/res/drawable/ic_bolsa.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/ic_minus.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/setshape.xml" value="0.1" />
         <entry key="app/src/main/res/font/fons.xml" value="0.17015818725951262" />
         <entry key="app/src/main/res/layout/activity_element.xml" value="0.25" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
-        <entry key="app/src/main/res/layout/fragment_create_element.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.15" />
+        <entry key="app/src/main/res/layout/activity_start.xml" value="0.1453612654980761" />
+        <entry key="app/src/main/res/layout/category_single_card_recyclerview.xml" value="0.1466438648995297" />
+        <entry key="app/src/main/res/layout/fragment_account.xml" value="0.1453612654980761" />
+        <entry key="app/src/main/res/layout/fragment_awards.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/fragment_create_element.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_foot_print_calculation.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.18" />
+        <entry key="app/src/main/res/layout/fragment_login.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_progress.xml" value="0.1453612654980761" />
+        <entry key="app/src/main/res/layout/fragment_register.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_result_calculate_footprint.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/fragment_welcome.xml" value="0.15" />
         <entry key="app/src/main/res/layout/list_item_category.xml" value="0.1453612654980761" />
         <entry key="app/src/main/res/layout/view_check_with_editext.xml" value="0.25" />
         <entry key="app/src/main/res/menu/bottom_navigation.xml" value="0.1453612654980761" />

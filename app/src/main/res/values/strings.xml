@@ -6,7 +6,8 @@
     <string name="create_element_description">Description</string>
     <string name="create_element_button_text">Create element</string>
     <string name="create_element_select_category">Category</string>
-    <string name="create_element_medidas">Medidas</string>
+    <string name="create_element_select_measure">Measure</string>
+    <string name="create_element_medidas">Measures (Measure/Grams)</string>
     <string-array name="categories">
         <item>Drinks</item>
         <item>Bottles</item>
@@ -14,6 +15,11 @@
         <item>Bags and film</item>
         <item>Pots, tubs, trays</item>
         <item>Other</item>
+    </string-array>
+    <string-array name="measures">
+        <item>Millimeters (ml)</item>
+        <item>Centimeters (cm)</item>
+        <item>Grams (g)</item>
     </string-array>
 
 </resources>

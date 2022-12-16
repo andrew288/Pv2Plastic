@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".fragments.ResultCalculateFootprintFragment"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <TextView
+        android:layout_width="375dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="60dp"
+        android:fontFamily="sans-serif-condensed-medium"
+        android:text="Resultados"
+        android:textAlignment="center"
+        android:textColor="@color/green_dark"
+        android:textSize="35dp"
+        android:textStyle="bold" />
+
+    <com.example.myfirstapplication.views.GraficoResultados
+        android:id="@+id/rcf_gr_imageGrafico"
+        android:layout_width="358dp"
+        android:layout_height="378dp"
+        android:layout_marginTop="40dp" />
+
+    <Button
+        android:id="@+id/rcf_bt_next"
+        android:layout_width="209dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/setshape"
+        android:text="CONTINUAR"
+        android:textColor="@color/black"
+        app:backgroundTint="@null" />
+
+</LinearLayout>

@@ -1,26 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
+    android:layout_height="800dp"
     android:orientation="vertical"
-    tools:context=".HomeFragment">
+    tools:context=".fragments.HomeFragment">
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="300dp"
+        android:layout_height="270dp"
         android:background="@color/black">
 
     </LinearLayout>
+
     <GridLayout
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_gravity="bottom"
-        android:layout_margin="20dp"
-        android:background="@color/green_normal"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:layout_marginBottom="130dp"
         android:columnCount="2"
         android:rowCount="3">
     >
-
         <androidx.cardview.widget.CardView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -38,9 +39,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_home_24" />
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/categoria_pet" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -68,9 +69,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_home_24" />
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/categoria_pead" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -98,9 +99,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_home_24" />
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/categoria_pp" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -128,9 +129,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_home_24" />
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/categoria_ps" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -158,9 +159,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_home_24" />
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/categoria_ldpe" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -188,9 +189,9 @@
                 android:orientation="vertical">
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:src="@drawable/ic_baseline_home_24" />
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
+                    android:src="@drawable/categoria_otros" />
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -202,4 +203,4 @@
         </androidx.cardview.widget.CardView>
     </GridLayout>
 
-</FrameLayout>
+</androidx.coordinatorlayout.widget.CoordinatorLayout>
