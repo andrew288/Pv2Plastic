@@ -64,8 +64,6 @@ public class AwardsFragment extends Fragment {
         btAddProduct = root.findViewById(R.id.awards_button_category_add);
         tvShowProducts = root.findViewById(R.id.awards_info_category);
         imageProduct = root.findViewById(R.id.awards_info_image);
-        AppDatabase db = AppDatabase.getInstance(this.getContext());
-        DaoProduct productDao = db.daoProduct();
 
         btAddProduct.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -226,5 +224,7 @@ public class AwardsFragment extends Fragment {
         categoryDao.insertCategory(new Category("PP"));
         categoryDao.insertCategory(new Category("PS"));
         categoryDao.insertCategory(new Category("Otros"));
+
+
     }
 }

@@ -15,26 +15,29 @@ import java.util.Date;
         )})
 public class RecordItem {
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    private int id;
 
     @NonNull
-    public int idRecord;
+    private int idRecord;
     @NonNull
-    public String name;
+    private String name;
     @NonNull
-    public String category;
-    public float grams;
-    public int score;
-    public Date hour;
+    private int category;
+    private float grams;
+    private int score;
+    private int hour;
+    private int minute;
+    private int second;
 
-    public RecordItem(int id, int idRecord, String name, String category, float grams, int score, Date hour){
-        this.id = id;
+    public RecordItem(int idRecord, String name, int category, int hour, int minute, int second, float grams, int score){
         this.idRecord = idRecord;
         this.name = name;
         this.category = category;
+        this.hour = hour;
+        this.minute = minute;
+        this.second = second;
         this.grams = grams;
         this.score = score;
-        this.hour = hour;
     }
 
     public int getId() {
@@ -63,12 +66,36 @@ public class RecordItem {
     }
 
     @NonNull
-    public String getCategory() {
+    public int getCategory() {
         return category;
     }
 
-    public void setCategory(@NonNull String category) {
+    public void setCategory(@NonNull int category) {
         this.category = category;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
+    public int getSecond() {
+        return second;
+    }
+
+    public void setSecond(int second) {
+        this.second = second;
     }
 
     public float getGrams() {
@@ -85,13 +112,5 @@ public class RecordItem {
 
     public void setScore(int score) {
         this.score = score;
-    }
-
-    public Date getHour() {
-        return hour;
-    }
-
-    public void setHour(Date hour) {
-        this.hour = hour;
     }
 }

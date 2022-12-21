@@ -16,8 +16,14 @@ public interface DaoRecord {
     @Query("SELECT * FROM records")
     List<Record> getRecords();
 
-    @Query("SELECT * FROM records WHERE date= :date")
-    Record getRecord(Date date);
+    @Query("SELECT * FROM records WHERE day= :day AND month= :month AND year= :year")
+    Record getRecordByDate(int day, int month, int year);
+
+    @Query("SELECT * FROM records WHERE id= :id")
+    Record getRecordById(int id);
+
+    @Query("SELECT * FROM records WHERE idUser= :idUser")
+    List<Record> getRecordsByUser(int idUser);
 
     @Insert
     void insertRecord(Record...records);

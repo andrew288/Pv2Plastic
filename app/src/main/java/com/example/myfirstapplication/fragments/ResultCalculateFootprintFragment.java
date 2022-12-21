@@ -55,7 +55,8 @@ public class ResultCalculateFootprintFragment extends Fragment implements Fragme
         btNextHome.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                startCallbacks.onMsgFromFragmentToStart("result","foo");
+                // CALCULAR NIVEL SEGUN EL TOTAL
+                startCallbacks.onMsgFromFragmentToStart("register","Principiante");
             }
         });
         return view;

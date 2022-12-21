@@ -15,8 +15,11 @@ public interface DaoRecordItem {
     @Query("SELECT * FROM record_items")
     List<RecordItem> getRecordItems();
 
+    @Query("SELECT * FROM record_items WHERE id= :id")
+    RecordItem getRecordItemById(int id);
+
     @Query("SELECT * FROM record_items WHERE idRecord= :idRecord")
-    RecordItem getRecordItem(int idRecord);
+    List<RecordItem> getRecordsItemByRecord(int idRecord);
 
     @Insert
     void insertRecordItem(RecordItem...recordItems);

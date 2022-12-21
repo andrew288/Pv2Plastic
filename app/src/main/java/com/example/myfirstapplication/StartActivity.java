@@ -5,6 +5,7 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.util.Log;
 
@@ -16,18 +17,26 @@ import com.example.myfirstapplication.fragments.WelcomeFragment;
 
 public class StartActivity extends AppCompatActivity implements StartCallbacks {
 
-    private FootPrintCalculationFragment footPrintCalculationFragment;
+    private FootPrintCalculationFragment footPrintCalculationFragment = new FootPrintCalculationFragment();
     private WelcomeFragment welcomeFragment = new WelcomeFragment();
     private LoginFragment loginFragment = new LoginFragment();
     private RegisterFragment registerFragment = new RegisterFragment();
-    private ResultCalculateFootprintFragment resultCalculateFootprintFragment;
+    private ResultCalculateFootprintFragment resultCalculateFootprintFragment = new ResultCalculateFootprintFragment();
     private FragmentTransaction ft;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_start);
-        loadFragment(loginFragment);
+        SharedPreferences pref = getApplicationContext().getSharedPreferences("Authentication",0);
+        String username =  pref.getString("USERNAME",null);
+        if(username!= null){
+            Intent intent = new Intent(this.getApplicationContext(), MainActivity.class);
+            startActivity(intent);
+        }
+        else{
+            setContentView(R.layout.activity_start);
+            loadFragment(welcomeFragment);
+        }
     }
 
     public void loadFragment(Fragment fragment){
@@ -40,6 +49,8 @@ public class StartActivity extends AppCompatActivity implements StartCallbacks {
     public void onMsgFromFragmentToStart(String sender, String strValue) {
         if (sender.equals("register")){
             try {
+                Bundle bundle = new Bundle();
+                bundle.putString("LEVEL", strValue);
                 loadFragment(registerFragment);
             } catch (Exception e){
                 Log.e("ERROR", "onStrFromFragToMain " + e.getMessage());
@@ -64,11 +75,7 @@ public class StartActivity extends AppCompatActivity implements StartCallbacks {
 
         if (sender.equals("nextFootprint")) {
             try {
-                ft = getSupportFragmentManager().beginTransaction();
-                footPrintCalculationFragment = FootPrintCalculationFragment.newInstance("","");
-                ft.replace(R.id.start_framelayout, footPrintCalculationFragment);
-                ft.commit();
-
+                loadFragment(footPrintCalculationFragment);
             } catch (Exception e) {
                 Log.e("ERROR", "onStrFromFragToMain " + e.getMessage());
             }
@@ -78,22 +85,15 @@ public class StartActivity extends AppCompatActivity implements StartCallbacks {
             try {
                 Bundle bundle = new Bundle();
                 bundle.putInt("TOTAL",Integer.parseInt(strValue));
-
-                ft = getSupportFragmentManager().beginTransaction();
-                resultCalculateFootprintFragment = ResultCalculateFootprintFragment.newInstance("","");
                 resultCalculateFootprintFragment.setArguments(bundle);
-
-                ft.replace(R.id.start_framelayout, resultCalculateFootprintFragment);
-                ft.commit();
-
+                loadFragment(resultCalculateFootprintFragment);
             } catch (Exception e) {
                 Log.e("ERROR", "onStrFromFragToMain " + e.getMessage());
             }
         }
         if (sender.equals("result")) {
             try {
-                Intent intent = new Intent(this.getApplicationContext(), MainActivity.class);
-                startActivity(intent);
+                loadFragment(loginFragment);
             } catch (Exception e) {
                 Log.e("ERROR", "onStrFromFragToMain " + e.getMessage());
             }

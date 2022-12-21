@@ -18,24 +18,24 @@ import org.w3c.dom.Text;
         })
 public class Product {
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    private int id;
 
     @NonNull
-    public int idCategory;
+    private int idCategory;
 
     @NonNull
-    public String name;
-    public String description;
-    public float sizeSGrams;
-    public int maxMeasureS;
-    public float sizeMGrams;
-    public int maxMeasureM;
-    public float sizeLGrams;
-    public int maxMeasureL;
-    public float sizeXLGrams;
-    public int maxMeasureXL;
-    public String measure;
-    public byte[] image;
+    private String name;
+    private String description;
+    private float sizeSGrams;
+    private int maxMeasureS;
+    private float sizeMGrams;
+    private int maxMeasureM;
+    private float sizeLGrams;
+    private int maxMeasureL;
+    private float sizeXLGrams;
+    private int maxMeasureXL;
+    private String measure;
+    private byte[] image;
 
     public Product(){
 

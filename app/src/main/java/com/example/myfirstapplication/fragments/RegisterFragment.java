@@ -28,6 +28,7 @@ public class RegisterFragment extends Fragment {
     private TextInputEditText tieUsername;
     private TextInputEditText tiePassword;
     private TextInputEditText tieConfirmPassword;
+    private String levelUser;
 
     private StartCallbacks startCallbacks;
 
@@ -46,6 +47,7 @@ public class RegisterFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
+            levelUser = getArguments().getString("LEVEL");
         }
     }
 
@@ -84,10 +86,9 @@ public class RegisterFragment extends Fragment {
                 String confirmPassword = tieConfirmPassword.getText().toString();
 
                 //VALIDATION
-
                 if(password.equals(confirmPassword)){
                     //ADD DATABASE
-                    User user = new User(fullname,email,username,password, "beginner");
+                    User user = new User(fullname,email,username,password, levelUser);
                     userDao.insertUser(user);
                     Log.d("REGISTER","USER REGISTRADO");
                     startCallbacks.onMsgFromFragmentToStart("login","foo");

@@ -15,8 +15,11 @@ public interface DaoProduct {
     @Query("SELECT * FROM products")
     List<Product> getProducts();
 
+    @Query("SELECT * FROM products WHERE id= :id")
+    Product getProductById(int id);
+
     @Query("SELECT * FROM products WHERE idCategory= :idCategory")
-    Product getProduct(int idCategory);
+    List<Product> getProductsByCategory(int idCategory);
 
     @Insert
     void insertProduct(Product...products);

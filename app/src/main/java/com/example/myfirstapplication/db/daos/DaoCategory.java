@@ -1,8 +1,10 @@
 package com.example.myfirstapplication.db.daos;
 
 import androidx.room.Dao;
+import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
+import androidx.room.Update;
 
 import com.example.myfirstapplication.db.Category;
 
@@ -14,14 +16,14 @@ public interface DaoCategory {
     List<Category> getCategories();
 
     @Query("SELECT * FROM categories WHERE id= :id")
-    Category getCategory(int id);
+    Category getCategoryById(int id);
 
     @Insert
     void insertCategory(Category...categories);
 
-    @Query("UPDATE categories SET name= :name WHERE id= :id")
-    void updateCategory(int id, String name);
+    @Update
+    void updateCategory(Category...categories);
 
-    @Query("DELETE FROM categories WHERE id= :id")
-    void deleteCategory(int id);
+    @Delete
+    void deleteCategory(Category...categories);
 }

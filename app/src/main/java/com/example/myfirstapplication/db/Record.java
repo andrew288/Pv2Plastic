@@ -17,18 +17,21 @@ import java.util.Date;
 public class Record {
 
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    private int id;
 
     @NonNull
-    public int idUser;
-    public Date date;
-    public float totalGrams;
-    public int totalScore;
+    private int idUser;
+    private int day;
+    private int month;
+    private int year;
+    private float totalGrams;
+    private int totalScore;
 
-    public Record(int id, int idUser, Date date, float totalGrams, int totalScore){
-        this.id = id;
+    public Record(int idUser, int day, int month, int year, float totalGrams, int totalScore){
         this.idUser = idUser;
-        this.date = date;
+        this.day = day;
+        this.month = month;
+        this.year = year;
         this.totalGrams = totalGrams;
         this.totalScore = totalScore;
     }
@@ -49,12 +52,28 @@ public class Record {
         this.idUser = idUser;
     }
 
-    public Date getDate() {
-        return date;
+    public int getDay() {
+        return day;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setDay(int day) {
+        this.day = day;
+    }
+
+    public int getMonth() {
+        return month;
+    }
+
+    public void setMonth(int month) {
+        this.month = month;
+    }
+
+    public int getYear() {
+        return year;
+    }
+
+    public void setYear(int year) {
+        this.year = year;
     }
 
     public float getTotalGrams() {

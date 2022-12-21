@@ -6,24 +6,16 @@ import androidx.room.PrimaryKey;
 @Entity(tableName = "users")
 public class User {
     @PrimaryKey(autoGenerate = true)
-    public int id;
+    private int id;
 
     @ColumnInfo(name = "full_name")
-    public String fullName;
+    private String fullName;
 
-    public String email;
-    public String username;
-    public String password;
-    public String level;
-
-    /*public User(int id, String fullName, String email, String username, String password, String level){
-        this.id = id;
-        this.fullName = fullName;
-        this.email = email;
-        this.username = username;
-        this.password = password;
-        this.level = level;
-    }*/
+    private String email;
+    private String username;
+    private String password;
+    private String level;
+    private int Score;
 
     public User(String fullName, String email, String username, String password, String level){
         this.fullName = fullName;
@@ -79,5 +71,13 @@ public class User {
 
     public void setLevel(String level) {
         this.level = level;
+    }
+
+    public int getScore() {
+        return Score;
+    }
+
+    public void setScore(int score) {
+        Score = score;
     }
 }

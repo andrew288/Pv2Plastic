@@ -60,11 +60,11 @@ public class CreateElementFragment extends Fragment {
     private HashMap<String, Float> measures;
     private int itemSelectedAdapterCategory = 0;
     private String itemSelectAdapterMeasure="None";
-    private String categoriesArray[] = {"Tereftalato de polietileno (PET)",
-                                        "Polietileno de alta densidad (PEAD)",
-                                        "Polietileno de baja densidad (LDPE)",
-                                        "Polipropileno (PP)",
-                                        "Poliestireno (PS)",
+    private String categoriesArray[] = {"Botellas y envases",
+                                        "Productos de limpieza y paquetes",
+                                        "Bolsas",
+                                        "Tapers y utensilios",
+                                        "Vasos y contenedores",
                                         "Otros"};
     private String measuresArray[] = {"Millimeters (ml)",
                                         "Centimeters (cm)",
