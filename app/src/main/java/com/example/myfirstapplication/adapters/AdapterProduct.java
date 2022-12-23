@@ -235,7 +235,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
                 }
 
                 // BUTTON L LOGICA
-                if(productSelected.getMaxMeasureM()!=0){
+                if(productSelected.getMaxMeasureL()!=0){
                     btSizeL.setText("L");
                     tvSizeL.setText(productSelected.getMaxMeasureM() +
                             " - " + productSelected.getMaxMeasureL());
@@ -275,7 +275,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
                 if(productSelected.getMaxMeasureXL()!=0){
                     btSizeXL.setText("XL");
                     tvSizeXL.setText(productSelected.getMaxMeasureL() +
-                            " - " + productSelected.getMaxMeasureXL()+" +");
+                            " - " + productSelected.getMaxMeasureXL());
 
                     btSizeXL.setOnClickListener(new View.OnClickListener() {
                         @Override
@@ -344,7 +344,7 @@ public class AdapterProduct extends RecyclerView.Adapter<AdapterProduct.ViewHold
                                 Record instanceRecord =  daoRecord.getRecordByDate(c.get(Calendar.DAY_OF_MONTH),
                                         c.get(Calendar.MONTH),
                                         c.get(Calendar.YEAR));
-                                newRecordItem.setId(instanceRecord.getId());
+                                newRecordItem.setIdRecord(instanceRecord.getId());
                             }
                             daoRecordItem.insertRecordItem(newRecordItem);
                             User user = daoUser.getUserById(pref.getInt("ID_USER",-1));

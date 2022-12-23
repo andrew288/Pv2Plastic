@@ -45,7 +45,8 @@ public abstract class AppDatabase extends RoomDatabase {
         if(INSTANCE == null){
             INSTANCE = Room.databaseBuilder(context, AppDatabase.class, "ecoplastic.db")
                     .allowMainThreadQueries()
-                    .fallbackToDestructiveMigration()
+//                    .fallbackToDestructiveMigration()
+                    .createFromAsset("ecoplastic.db")
                     .build();
         }
         return INSTANCE;

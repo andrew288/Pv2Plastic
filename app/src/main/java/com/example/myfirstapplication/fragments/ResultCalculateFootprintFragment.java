@@ -45,10 +45,26 @@ public class ResultCalculateFootprintFragment extends Fragment implements Fragme
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_result_calculate_footprint, container, false);
         Bundle bundle = this.getArguments();
-        int data = bundle.getInt("TOTAL");
+        String data = bundle.getString("TOTAL");
+        int dataValue = 3;
+        switch (data){
+            case "EXPERTO":
+                dataValue = 1;
+                break;
+            case "AVANZADO":
+                dataValue = 2;
+                break;
+            case "INTERMEDIO":
+                dataValue = 3;
+                break;
+            case "PRINCIPIANTE":
+                dataValue = 4;
+                break;
+        }
+
 
         graficoResultados =  view.findViewById(R.id.rcf_gr_imageGrafico);
-        graficoResultados.setValue(data);
+        graficoResultados.setValue(dataValue);
 
         btNextHome = view.findViewById(R.id.rcf_bt_next);
 
@@ -56,7 +72,7 @@ public class ResultCalculateFootprintFragment extends Fragment implements Fragme
             @Override
             public void onClick(View view) {
                 // CALCULAR NIVEL SEGUN EL TOTAL
-                startCallbacks.onMsgFromFragmentToStart("register","Principiante");
+                startCallbacks.onMsgFromFragmentToStart("register",data);
             }
         });
         return view;

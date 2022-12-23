@@ -1,11 +1,15 @@
 package com.example.myfirstapplication.db;
 
+import android.graphics.BitmapFactory;
 import android.media.audiofx.AudioEffect;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
+
+import com.example.myfirstapplication.R;
+import com.example.myfirstapplication.db.converters.ConverterBitMap;
 
 import org.w3c.dom.Text;
 
@@ -177,4 +181,5 @@ public class Product {
     public void setImage(byte[] image) {
         this.image = image;
     }
+
 }

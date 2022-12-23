@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import com.example.myfirstapplication.R;
 import com.example.myfirstapplication.adapters.AdapterRecordItems;
@@ -23,6 +24,7 @@ import java.util.List;
 
 public class RecordItemsFragment extends Fragment {
     RecyclerView recview;
+    TextView textViewEmpty;
     public RecordItemsFragment() {
         // Required empty public constructor
     }
@@ -51,6 +53,7 @@ public class RecordItemsFragment extends Fragment {
         DaoRecord daoRecord = db.daoRecord();
 
         recview = root.findViewById(R.id.record_items_recycle_view);
+        textViewEmpty = root.findViewById(R.id.record_items_textEmpty);
         LinearLayoutManager layoutManager = new LinearLayoutManager(root.getContext(), LinearLayoutManager.VERTICAL, false);
         recview.setLayoutManager(layoutManager);
 
@@ -61,6 +64,9 @@ public class RecordItemsFragment extends Fragment {
             List<RecordItem> recordItems = daoRecordItem.getRecordsItemByRecord(record.getId());
             AdapterRecordItems adapterRecordItems = new AdapterRecordItems(this.getContext(), recordItems);
             recview.setAdapter(adapterRecordItems);
+        }
+        else{
+            textViewEmpty.setText("Aun no se ha registrado ningún elemento el día de hoy");
         }
         return root;
     }

@@ -29,6 +29,7 @@ import android.widget.Toast;
 import com.example.myfirstapplication.R;
 import com.example.myfirstapplication.db.AppDatabase;
 import com.example.myfirstapplication.db.Product;
+import com.example.myfirstapplication.db.converters.ConverterBitMap;
 import com.example.myfirstapplication.db.daos.DaoProduct;
 import com.example.myfirstapplication.widgets.CheckboxWithEditText;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -51,6 +52,7 @@ public class CreateElementFragment extends Fragment {
     private static final int PERMISSION_CODE = 1234;
     private static final int CAPTURE_CODE = 1001;
     private Uri image_uri;
+    private Product product = new Product();
 
     //FEATURES PRODUCT
     private TextInputEditText textInputName;
@@ -165,7 +167,6 @@ public class CreateElementFragment extends Fragment {
 
                 String nameElement = textInputName.getText().toString();
                 String descriptionElement = textInputDescription.getText().toString();
-                Product product = new Product();
 
                 Log.d("ELEMENT","NAME: " + nameElement);
                 Log.d("ELEMENT","DESCRIPTION: " + descriptionElement);
@@ -180,28 +181,35 @@ public class CreateElementFragment extends Fragment {
                     product.setIdCategory(itemSelectedAdapterCategory);
 
                     if(sizeS.itemSelected()){
-                        Log.d("ELEMENT","SIZE S: " + sizeS.getValueSizeElement().getText().toString());
-                        measures.put("S", Float.parseFloat(sizeS.getValueSizeElement().getText().toString()));
                         product.setMaxMeasureS(Integer.parseInt(sizeS.getRangeSizeElement().getText().toString()));
                         product.setSizeSGrams(Float.parseFloat(sizeS.getValueSizeElement().getText().toString()));
                     }
+
+                    // MEDIDA M
                     if(sizeM.itemSelected()){
-                        Log.d("ELEMENT","SIZE M: " + sizeM.getValueSizeElement().getText().toString());
-                        measures.put("M", Float.parseFloat(sizeM.getValueSizeElement().getText().toString()));
-                        product.setMaxMeasureS(Integer.parseInt(sizeM.getRangeSizeElement().getText().toString()));
-                        product.setSizeSGrams(Float.parseFloat(sizeM.getValueSizeElement().getText().toString()));
+                        product.setMaxMeasureM(Integer.parseInt(sizeM.getRangeSizeElement().getText().toString()));
+                        product.setSizeMGrams(Float.parseFloat(sizeM.getValueSizeElement().getText().toString()));
+                    } else{
+                        product.setMaxMeasureM(0);
+                        product.setSizeMGrams(0);
                     }
+
+                    // MEDIDA L
                     if(sizeL.itemSelected()){
-                        Log.d("ELEMENT","SIZE L: " + sizeL.getValueSizeElement().getText().toString());
-                        measures.put("L", Float.parseFloat(sizeL.getValueSizeElement().getText().toString()));
-                        product.setMaxMeasureS(Integer.parseInt(sizeL.getRangeSizeElement().getText().toString()));
-                        product.setSizeSGrams(Float.parseFloat(sizeL.getValueSizeElement().getText().toString()));
+                        product.setMaxMeasureL(Integer.parseInt(sizeL.getRangeSizeElement().getText().toString()));
+                        product.setSizeLGrams(Float.parseFloat(sizeL.getValueSizeElement().getText().toString()));
+                    } else{
+                        product.setMaxMeasureL(0);
+                        product.setSizeLGrams(0);
                     }
+
+                    // MEDIDA XL
                     if(sizeXL.itemSelected()){
-                        Log.d("ELEMENT","SIZE XL: " + sizeXL.getValueSizeElement().getText().toString());
-                        measures.put("XL", Float.parseFloat(sizeXL.getValueSizeElement().getText().toString()));
-                        product.setMaxMeasureS(Integer.parseInt(sizeXL.getRangeSizeElement().getText().toString()));
-                        product.setSizeSGrams(Float.parseFloat(sizeXL.getValueSizeElement().getText().toString()));
+                        product.setMaxMeasureXL(Integer.parseInt(sizeXL.getRangeSizeElement().getText().toString()));
+                        product.setSizeXLGrams(Float.parseFloat(sizeXL.getValueSizeElement().getText().toString()));
+                    } else{
+                        product.setMaxMeasureXL(0);
+                        product.setSizeXLGrams(0);
                     }
 
                     productDao.insertProduct(product);
@@ -244,6 +252,7 @@ public class CreateElementFragment extends Fragment {
         if(resultCode == getActivity().RESULT_OK){
             Bundle extras = data.getExtras();
             Bitmap imgBitMap = (Bitmap) extras.get("data");
+            product.setImage(ConverterBitMap.getStringFromBitMap(imgBitMap));
             imageProduct.setImageBitmap(imgBitMap);
         }
     }

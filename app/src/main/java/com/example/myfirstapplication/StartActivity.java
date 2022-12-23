@@ -51,6 +51,7 @@ public class StartActivity extends AppCompatActivity implements StartCallbacks {
             try {
                 Bundle bundle = new Bundle();
                 bundle.putString("LEVEL", strValue);
+                registerFragment.setArguments(bundle);
                 loadFragment(registerFragment);
             } catch (Exception e){
                 Log.e("ERROR", "onStrFromFragToMain " + e.getMessage());
@@ -84,7 +85,7 @@ public class StartActivity extends AppCompatActivity implements StartCallbacks {
         if (sender.equals("footprintCalculate")) {
             try {
                 Bundle bundle = new Bundle();
-                bundle.putInt("TOTAL",Integer.parseInt(strValue));
+                bundle.putString("TOTAL", strValue);
                 resultCalculateFootprintFragment.setArguments(bundle);
                 loadFragment(resultCalculateFootprintFragment);
             } catch (Exception e) {

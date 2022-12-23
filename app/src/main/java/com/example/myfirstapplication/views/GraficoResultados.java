@@ -55,7 +55,7 @@ public class GraficoResultados extends View {
         float ancho = (medioX + cuartoX) - (medioX - cuartoX);
 
         String[] colores = {"#00FFE0","#D2FF00","#FFD400","#FF0000","#C4F8FF"};
-        String[] niveles = {"BAJO","MODERADO","ALTO","EXTREMO"};
+        String[] niveles = {"EXPERTO","AVANZADO","INTERMEDIO","PRINCIPIANTE"};
 
         mDialPaint.setColor(Color.parseColor(colores[4]));
         Path path = new Path();

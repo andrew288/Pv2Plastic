@@ -60,8 +60,8 @@ public class FootPrintCalculationFragment extends Fragment implements FragmentSt
         btCalculate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                int val = calcular(editTexts);
-                startCallbacks.onMsgFromFragmentToStart("footprintCalculate",String.valueOf(val));
+                String val = calcular(editTexts);
+                startCallbacks.onMsgFromFragmentToStart("footprintCalculate", val);
             }
         });
 
@@ -79,7 +79,7 @@ public class FootPrintCalculationFragment extends Fragment implements FragmentSt
         }
     }
 
-    public int calcular(EditText[] edits){
+    public String calcular(EditText[] edits){
         int suma = 0;
         String cad;
         for(int val = 0; val < 4; val++){
@@ -88,12 +88,12 @@ public class FootPrintCalculationFragment extends Fragment implements FragmentSt
                 suma += Integer.parseInt(cad);
         }
         if(suma<10)
-            return 1;
+            return "EXPERTO";
         else if (suma<15)
-            return 2;
+            return "AVANZADO";
         else if(suma<20)
-            return 3;
-        else return 4;
+            return "INTERMEDIO";
+        else return "PRINCIPIANTE";
     }
 
     @Override
