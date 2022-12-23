@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -80,6 +81,14 @@ public class MainActivity extends AppCompatActivity implements MainCallbacks {
         if(sender.equals("create-element")){
             try{
                 loadFragment(createElementFragment);
+            } catch (Exception e){
+                Log.e("ERROR", "onStrFromFragToMain " + e.getMessage());
+            }
+        }
+        if(sender.equals("return_start")){
+            try{
+                Intent intent = new Intent(this, StartActivity.class);
+                startActivity(intent);
             } catch (Exception e){
                 Log.e("ERROR", "onStrFromFragToMain " + e.getMessage());
             }

@@ -1,49 +1,49 @@
 package com.example.myfirstapplication.fragments;
 
+import android.app.Dialog;
+import android.content.Context;
+import android.content.SharedPreferences;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
+import android.media.Image;
+import android.media.MediaExtractor;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.appcompat.widget.AppCompatButton;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
+import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.Window;
+import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.TextView;
 
+import com.example.myfirstapplication.MainCallbacks;
 import com.example.myfirstapplication.R;
+import com.example.myfirstapplication.StartCallbacks;
+import com.example.myfirstapplication.db.AppDatabase;
+import com.example.myfirstapplication.db.User;
+import com.example.myfirstapplication.db.daos.DaoUser;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link AccountFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
+
 public class AccountFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM1 = "param1";
-    private static final String ARG_PARAM2 = "param2";
+    private AppDatabase db;
+    private DaoUser userDao;
+    private User user;
+    private View mainView;
+    MainCallbacks mainCallbacks;
 
-    // TODO: Rename and change types of parameters
-    private String mParam1;
-    private String mParam2;
+    public AccountFragment() {}
 
-    public AccountFragment() {
-        // Required empty public constructor
-    }
-
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param param1 Parameter 1.
-     * @param param2 Parameter 2.
-     * @return A new instance of fragment AccountFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static AccountFragment newInstance(String param1, String param2) {
+    public static AccountFragment newInstance() {
         AccountFragment fragment = new AccountFragment();
         Bundle args = new Bundle();
-        args.putString(ARG_PARAM1, param1);
-        args.putString(ARG_PARAM2, param2);
         fragment.setArguments(args);
         return fragment;
     }
@@ -51,16 +51,120 @@ public class AccountFragment extends Fragment {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mParam1 = getArguments().getString(ARG_PARAM1);
-            mParam2 = getArguments().getString(ARG_PARAM2);
-        }
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_account, container, false);
+
+        // reference to database
+        SharedPreferences pref = getContext().getSharedPreferences("Authentication",0);
+        int username =  pref.getInt("ID_USER",0);
+        db = AppDatabase.getInstance(this.getContext());
+        userDao = db.daoUser();
+        user = userDao.getUserById(username);
+
+        mainView = inflater.inflate(R.layout.fragment_account, container, false);
+        /**
+         * TextView auxTextView, reference all elements.
+         */
+        updateScreen();
+
+        ImageButton editButton = mainView.findViewById(R.id.setProfileButton);
+        editButton.setOnClickListener(showProfile);
+
+        AppCompatButton logoutButton =  mainView.findViewById(R.id.account_bt_logout);
+        logoutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                SharedPreferences.Editor editor = pref.edit();
+                editor.clear();
+                editor.commit();
+                mainCallbacks.onMsgFromFragmentToMain("return_start",-1);
+            }
+        });
+
+        return mainView;
+    }
+
+    private View.OnClickListener showProfile = view -> {
+        showSetProfile();
+    };
+
+
+    private void showSetProfile () {
+        Dialog dialog = new Dialog(this.getContext());
+        dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
+        dialog.setContentView(R.layout.bottom_sheet_profile);
+
+        ((EditText) dialog.findViewById(R.id.edit_profile_tie_username)).setText(user.getUsername());
+        ((EditText) dialog.findViewById(R.id.edit_profile_tie_fullname)).setText(user.getFullName());
+        ((EditText) dialog.findViewById(R.id.edit_profile_tie_password)).setText(user.getPassword());
+        ((EditText) dialog.findViewById(R.id.edit_profile_tie_email)).setText(user.getEmail());
+
+        ImageButton saveButton = dialog.findViewById(R.id.save_edit_profile);
+        ImageButton discardButton = dialog.findViewById(R.id.discard_edit_profile);
+
+        discardButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                dialog.dismiss();
+            }
+        });
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                EditText aux = dialog.findViewById(R.id.edit_profile_tie_fullname);
+                user.setFullName(aux.getText().toString());
+
+                aux = dialog.findViewById(R.id.edit_profile_tie_email);
+                user.setEmail(aux.getText().toString());
+
+                aux = dialog.findViewById(R.id.edit_profile_tie_username);
+                user.setUsername(aux.getText().toString());
+
+                aux = dialog.findViewById(R.id.edit_profile_tie_password);
+                user.setPassword(aux.getText().toString());
+
+                userDao.updateUser(user);
+                updateScreen();
+                dialog.dismiss();
+            }
+        });
+
+        dialog.show();
+        dialog.getWindow().setLayout(ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT);
+        dialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
+        dialog.getWindow().setGravity(Gravity.BOTTOM);
+    }
+
+    private void updateScreen() {
+        TextView auxTextView = mainView.findViewById(R.id.userFullName);
+        auxTextView.setText(user.getFullName());
+
+        auxTextView = mainView.findViewById(R.id.userNickName);
+        auxTextView.setText(user.getUsername());
+
+        auxTextView = mainView.findViewById(R.id.emailProfileText);
+        auxTextView.setText(user.getEmail());
+
+        auxTextView = mainView.findViewById(R.id.userPoints);
+        auxTextView.setText(user.getLevel());
+
+        auxTextView = mainView.findViewById(R.id.userDays);
+        auxTextView.setText(String.valueOf(user.getScore()));
+
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof MainCallbacks){
+            mainCallbacks = (MainCallbacks) context;
+        }
+        else{
+            throw new RuntimeException(context.toString()+"must implement FragmentCallbacks");
+        }
     }
 }
