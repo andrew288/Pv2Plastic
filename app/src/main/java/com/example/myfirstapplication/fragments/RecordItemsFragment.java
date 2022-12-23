@@ -66,7 +66,7 @@ public class RecordItemsFragment extends Fragment {
             recview.setAdapter(adapterRecordItems);
         }
         else{
-            textViewEmpty.setText("Aun no se ha registrado ningún elemento el día de hoy");
+            textViewEmpty.setText("Aun no se ha registrado elementos");
         }
         return root;
     }

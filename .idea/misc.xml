@@ -4,6 +4,8 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.2" />
+        <entry key="app/src/main/res/drawable/background2.xml" value="0.1" />
+        <entry key="app/src/main/res/drawable/backgroundmosaico.xml" value="0.1" />
         <entry key="app/src/main/res/drawable/ic_baseline_account_circle_24.xml" value="0.184" />
         <entry key="app/src/main/res/drawable/ic_baseline_add_24_floatting.xml" value="0.1855" />
         <entry key="app/src/main/res/drawable/ic_baseline_cancel_24.xml" value="0.1245" />
@@ -16,12 +18,14 @@
         <entry key="app/src/main/res/drawable/style_bt_measure.xml" value="0.1245" />
         <entry key="app/src/main/res/font/fons.xml" value="0.17015818725951262" />
         <entry key="app/src/main/res/layout/activity_element.xml" value="0.25" />
-        <entry key="app/src/main/res/layout/activity_main.xml" value="0.2" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.1" />
         <entry key="app/src/main/res/layout/activity_start.xml" value="0.1453612654980761" />
         <entry key="app/src/main/res/layout/bottom_sheet_profile.xml" value="0.15818725951261223" />
+        <entry key="app/src/main/res/layout/bottom_sheet_terms.xml" value="0.1" />
+        <entry key="app/src/main/res/layout/bottom_shet_developers.xml" value="0.1" />
         <entry key="app/src/main/res/layout/category_single_card_recyclerview.xml" value="0.1466438648995297" />
         <entry key="app/src/main/res/layout/create_product_dialog.xml" value="0.1" />
-        <entry key="app/src/main/res/layout/fragment_account.xml" value="0.22" />
+        <entry key="app/src/main/res/layout/fragment_account.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_awards.xml" value="0.2" />
         <entry key="app/src/main/res/layout/fragment_category.xml" value="0.1" />
         <entry key="app/src/main/res/layout/fragment_create_element.xml" value="0.22" />

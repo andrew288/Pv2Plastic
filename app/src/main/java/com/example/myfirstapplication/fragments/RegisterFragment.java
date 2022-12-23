@@ -91,7 +91,7 @@ public class RegisterFragment extends Fragment {
                     User user = new User(fullname,email,username,password, levelUser);
                     userDao.insertUser(user);
                     Log.d("REGISTER","USER REGISTRADO");
-                    startCallbacks.onMsgFromFragmentToStart("login","foo");
+                    startCallbacks.onMsgFromFragmentToStart("login",levelUser);
 
                 }
                 else{

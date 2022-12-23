@@ -115,7 +115,7 @@ public class BarraView extends View {
                 textPos = widthV - (startW/10)*7;
             else
                 textPos = widthV - (startW/10)*6;
-            String date = month(totalRecord.get(i).getMonth()-1) + " " + totalRecord.get(i).getDay();
+            String date = month(totalRecord.get(i).getMonth()) + " " + totalRecord.get(i).getDay();
             canvas.drawText(date, textPos,heightF+parteH+(parteH/2), mTextPaint);
         }
     }
@@ -131,7 +131,7 @@ public class BarraView extends View {
     }
 
     private void init(){
-        totalRecord.add(new Record(1,22,12,2022,10,2));
+        totalRecord.add(new Record(1,22,11,2022,10,2));
 //        totalRecord.add(new Record(1,2,1,1,2,1));
 //        totalRecord.add(new Record(1,3,1,1,3,1));
 //        totalRecord.add(new Record(1,4,1,1,1,1));

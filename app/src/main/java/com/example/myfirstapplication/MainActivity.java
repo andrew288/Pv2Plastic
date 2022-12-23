@@ -2,10 +2,14 @@ package com.example.myfirstapplication;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NotificationCompat;
+import androidx.core.app.NotificationManagerCompat;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.PendingIntent;
 import android.content.Intent;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
@@ -27,6 +31,8 @@ public class MainActivity extends AppCompatActivity implements MainCallbacks {
     AccountFragment accountFragment = new AccountFragment();
     CategoryFragment categoryFragment = new CategoryFragment();
     BottomNavigationView navigation;
+    private static final String CHANNEL_ID = "canal ";
+    private PendingIntent pendingIntent;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,6 +43,28 @@ public class MainActivity extends AppCompatActivity implements MainCallbacks {
         navigation.setOnNavigationItemSelectedListener(mOnNavigationItemSelectedListener);
 
         loadFragment(homeFragment);
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        Intent intent = new Intent(this, MainActivity.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        PendingIntent pendingIntent = PendingIntent.getActivity(this, 0, intent, PendingIntent.FLAG_IMMUTABLE);
+        createNotification();
+    }
+
+    protected void createNotification(){
+        NotificationCompat.Builder builder = new NotificationCompat.Builder(this, CHANNEL_ID)
+                .setSmallIcon(R.drawable.ic_logo)
+                .setLargeIcon(BitmapFactory.decodeResource(getResources(),R.drawable.verde))
+                .setContentTitle("ECOPLASTYC")
+                .setContentText("Regresa y sigue canjeando puntos, cuidemos el planeta !!!")
+                .setPriority(NotificationCompat.PRIORITY_DEFAULT)
+                .setContentIntent(pendingIntent)
+                .setAutoCancel(true);
+        NotificationManagerCompat notificationManager = NotificationManagerCompat.from(this);
+        notificationManager.notify(0, builder.build());
     }
 
     private final BottomNavigationView.OnNavigationItemSelectedListener mOnNavigationItemSelectedListener = new BottomNavigationView.OnNavigationItemSelectedListener() {

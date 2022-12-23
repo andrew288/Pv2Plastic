@@ -13,4 +13,9 @@
     <color name="green_light_2">#b8e1dd</color>
     <color name="black_coral">#54626F</color>
     <color name="red">#ED2939</color>
+
+    <color name="green_light_0">#D4F8F4</color>
+    <color name="green_light_1">#9AFAF1</color>
+    <color name="green_light_3">#70D3C9</color>
+    <color name="green_light_4">#4EACA1</color>
 </resources>

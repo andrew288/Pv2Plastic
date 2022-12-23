@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="100dp"
+    android:width="50dp"
+    android:viewportHeight="100"
+    android:viewportWidth="100"
+    >
+    <path
+        android:fillColor="@color/green_light_1"
+        android:pathData="M 25,25 L 50,0 0,0 z"
+        />
+    <path
+        android:fillColor="@color/green_light_2"
+        android:pathData="M 25,25 L 50,0 50,50 z"
+        />
+    <path
+        android:fillColor="@color/green_light_4"
+        android:pathData="M 25,25 L 50,50 0,50 z"
+        />
+    <path
+        android:fillColor="@color/green_light_3"
+        android:pathData="M 25,25 L 0,50 0,0 z"
+        />
+
+    <path
+        android:fillColor="@color/green_light_1"
+        android:pathData="M 75,25 L 100,0 50,0 z"
+        />
+    <path
+        android:fillColor="@color/green_light_2"
+        android:pathData="M 75,25 L 100,0 100,50 z"
+        />
+    <path
+        android:fillColor="@color/green_light_4"
+        android:pathData="M 75,25 L 100,50 50,50 z"
+        />
+    <path
+        android:fillColor="@color/green_light_3"
+        android:pathData="M 75,25 L 50,50 50,0 z"
+        />
+
+    <path
+        android:fillColor="@color/green_light_1"
+        android:pathData="M 75,75 L 100,50 50,50 z"
+        />
+    <path
+        android:fillColor="@color/green_light_2"
+        android:pathData="M 75,75 L 100,50 100,100 z"
+        />
+    <path
+        android:fillColor="@color/green_light_4"
+        android:pathData="M 75,75 L 50,100 100,100 z"
+        />
+    <path
+        android:fillColor="@color/green_light_3"
+        android:pathData="M 75,75 L 50,100 50,50 z"
+        />
+
+    <path
+        android:fillColor="@color/green_light_1"
+        android:pathData="M 25,75 L 50,50 0,50 z"
+        />
+    <path
+        android:fillColor="@color/green_light_2"
+        android:pathData="M 25,75 L 50,50 50,100 z"
+        />
+    <path
+        android:fillColor="@color/green_light_4"
+        android:pathData="M 25,75 L 50,100 0,100 z"
+        />
+    <path
+        android:fillColor="@color/green_light_3"
+        android:pathData="M 25,75 L 0,100 0,50 z"
+        />
+
+</vector>

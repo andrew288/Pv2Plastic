@@ -63,12 +63,4 @@
             android:layout_height="wrap_content"/>
     </LinearLayout>
 
-    <ImageView
-        android:id="@+id/record_item_bt_delete"
-        android:layout_gravity="center"
-        android:src="@drawable/ic_baseline_cancel_24"
-        android:layout_width="40dp"
-        android:layout_height="40dp"
-        android:layout_marginRight="100dp"/>
-
 </LinearLayout>

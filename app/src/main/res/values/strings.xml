@@ -22,8 +22,8 @@
         <item>Grams (g)</item>
     </string-array>
 
-    <string name="favorite_products">Favorite Products</string>
-    <string name="exchange_points">Exchange Points</string>
+    <string name="favorite_products">Developers</string>
+    <string name="exchange_points">Terms and Conditions</string>
     <string name="share">Share</string>
     <string name="log_out">Log Out</string>
 

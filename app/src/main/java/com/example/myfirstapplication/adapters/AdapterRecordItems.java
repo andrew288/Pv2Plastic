@@ -41,17 +41,6 @@ public class AdapterRecordItems extends RecyclerView.Adapter<AdapterRecordItems.
         holder.tvNameElement.setText(recordItemSelected.getName());
         holder.tvTotalGrams.setText(String.valueOf(recordItemSelected.getGrams()));
         holder.tvTotalScore.setText(String.valueOf(recordItemSelected.getScore()));
-        holder.btDeleteRecordItem.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                AppDatabase db = AppDatabase.getInstance(mContext);
-                DaoRecordItem daoRecordItem = db.daoRecordItem();
-                daoRecordItem.deleteRecordItem(recordItemSelected);
-                recordItems.remove(position);
-                notifyItemRemoved(position);
-                notifyItemRangeRemoved(position, recordItems.size());
-            }
-        });
     }
 
     @Override
@@ -64,14 +53,12 @@ public class AdapterRecordItems extends RecyclerView.Adapter<AdapterRecordItems.
         TextView tvNameElement;
         TextView tvTotalGrams;
         TextView tvTotalScore;
-        ImageView btDeleteRecordItem;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             tvNameElement = (TextView) itemView.findViewById(R.id.record_item_name_product);
             tvTotalGrams = (TextView) itemView.findViewById(R.id.record_item_grams_total);
             tvTotalScore = (TextView) itemView.findViewById(R.id.record_item_score_total);
-            btDeleteRecordItem = (ImageView) itemView.findViewById(R.id.record_item_bt_delete);
         }
     }
 }

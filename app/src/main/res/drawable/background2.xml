@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:height="100dp"
+    android:width="50dp"
+    android:viewportHeight="100"
+    android:viewportWidth="100"
+    >
+    <path android:fillColor="@color/green_light_0"
+        android:pathData="M 0,0 L 100,0 100,100 0,100"/>
+    <path
+        android:fillColor="@color/green_light_2"
+        android:pathData="M 0,-50 A 1.35,1 -10,1 1,1 60" />
+    <path
+        android:fillColor="@color/green_light_3"
+        android:pathData="M 0,-60 A 1.4,1 -10,1 1,1 45" />
+    <path
+        android:fillColor="@color/green_light_1"
+        android:pathData="M 0,-80 A 1.55,1 -10,1 1,1 30" />
+    <path
+        android:fillColor="@color/green_light_0"
+        android:pathData="M 0,-100 A 1.75,1 -10,1 1,1 20" />
+
+    <path
+        android:fillColor="@color/green_light_2"
+        android:pathData="M 100,100 L 100,70 30,100" />
+    <path
+        android:fillColor="@color/green_light_3"
+        android:pathData="M 100,100 L 100,70 50,100" />
+    <path
+        android:fillColor="@color/green_light_1"
+        android:pathData="M 100,100 L 100,70 70,100" />
+    <path
+        android:fillColor="@color/green_light_0"
+        android:pathData="M 100,100 L 100,70 90,100" />
+
+</vector>

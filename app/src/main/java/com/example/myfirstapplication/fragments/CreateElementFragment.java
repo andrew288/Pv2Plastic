@@ -2,6 +2,7 @@ package com.example.myfirstapplication.fragments;
 
 import android.Manifest;
 import android.content.ContentValues;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
@@ -26,6 +27,7 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.example.myfirstapplication.MainCallbacks;
 import com.example.myfirstapplication.R;
 import com.example.myfirstapplication.db.AppDatabase;
 import com.example.myfirstapplication.db.Product;
@@ -71,6 +73,7 @@ public class CreateElementFragment extends Fragment {
     private String measuresArray[] = {"Millimeters (ml)",
                                         "Centimeters (cm)",
                                         "Grams (g)"};
+    MainCallbacks mainCallbacks;
 
     public CreateElementFragment() {
         // Required empty public constructor
@@ -213,7 +216,7 @@ public class CreateElementFragment extends Fragment {
                     }
 
                     productDao.insertProduct(product);
-
+                    mainCallbacks.onMsgFromFragmentToMain("category",itemSelectedAdapterCategory);
                 }
 
             }
@@ -254,6 +257,17 @@ public class CreateElementFragment extends Fragment {
             Bitmap imgBitMap = (Bitmap) extras.get("data");
             product.setImage(ConverterBitMap.getStringFromBitMap(imgBitMap));
             imageProduct.setImageBitmap(imgBitMap);
+        }
+    }
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if (context instanceof MainCallbacks){
+            mainCallbacks = (MainCallbacks) context;
+        }
+        else{
+            throw new RuntimeException(context.toString()+"must implement FragmentCallbacks");
         }
     }
 }
